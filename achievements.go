@@ -1,10 +1,10 @@
-package hypixel
+package gopixel
 
 import (
 	"encoding/json"
 	"errors"
 
-	"hypixel.go/structs"
+	"gopixel/structs"
 )
 
 func (client *Client) Achievements() (structs.Achievements, error) {

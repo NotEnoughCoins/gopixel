@@ -1,4 +1,4 @@
-package hypixel
+package gopixel
 
 import (
 	"io/ioutil"

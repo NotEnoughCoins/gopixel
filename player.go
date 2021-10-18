@@ -1,10 +1,10 @@
-package hypixel
+package gopixel
 
 import (
 	"encoding/json"
 	"errors"
 
-	structs "hypixel.go/structs"
+	structs "gopixel/structs"
 )
 
 func Uuid(name string) (string, error) {
