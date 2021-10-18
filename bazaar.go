@@ -2,6 +2,7 @@ package hypixel
 
 import (
 	"encoding/json"
+	"errors"
 
 	structs "hypixel.go/structs"
 )
@@ -15,6 +16,10 @@ func (client *Client) BazaarData() (structs.Bazaar, error) {
 	}
 
 	err = json.Unmarshal(data, &bazaar)
+
+	if !bazaar.Success {
+		err = errors.New(bazaar.Cause)
+	}
 
 	return bazaar, err
 }

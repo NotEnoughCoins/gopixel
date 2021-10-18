@@ -2,6 +2,7 @@ package hypixel
 
 import (
 	"encoding/json"
+	"errors"
 
 	structs "hypixel.go/structs"
 )
@@ -15,6 +16,10 @@ func (client *Client) KeyInfo() (structs.Key, error) {
 	}
 
 	err = json.Unmarshal(data, &key)
+
+	if !key.Success {
+		err = errors.New(key.Cause)
+	}
 
 	return key, err
 }

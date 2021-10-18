@@ -6,7 +6,8 @@ type Parkour []struct {
 }
 
 type Player struct {
-	Success bool `json:"success"`
+	Success bool   `json:"success"`
+	Cause   string `json:"cause"`
 	Data    struct {
 		ID           string `json:"_id"`
 		Achievements struct {

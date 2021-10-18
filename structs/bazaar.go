@@ -32,8 +32,9 @@ type Product struct {
 }
 
 type Bazaar struct {
-	Success     bool  `json:"success"`
-	LastUpdated int64 `json:"lastUpdated"`
+	Success     bool   `json:"success"`
+	Cause       string `json:"cause"`
+	LastUpdated int64  `json:"lastUpdated"`
 	Products    struct {
 		INKSACK3 struct {
 			Product

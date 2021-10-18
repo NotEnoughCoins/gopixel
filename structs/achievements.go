@@ -1,8 +1,9 @@
 package structs
 
 type Achievements struct {
-	Success      bool  `json:"success"`
-	LastUpdated  int64 `json:"lastUpdated"`
+	Success      bool   `json:"success"`
+	Cause        string `json:"cause"`
+	LastUpdated  int64  `json:"lastUpdated"`
 	Achievements struct {
 		Arcade struct {
 			OneTime struct {
