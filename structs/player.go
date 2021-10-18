@@ -2387,7 +2387,7 @@ type Player struct {
 				KillsDm                            float64  `json:"kills_dm"`
 				KillsDmTeams                       float64  `json:"kills_dm_teams"`
 				KillsTimeattack                    float64  `json:"kills_timeattack"`
-				MessageOthersKillsDeaths           bool     `json:"messageOthers' Kills/deaths"`
+				MessageOthersKillsDeaths           bool     `json:"messageOthers\u0027 Kills/deaths"`
 				MessageYourKills                   bool     `json:"messageYour Kills"`
 				MessageCoinMessages                bool     `json:"messageCoin Messages"`
 				MessageMultiKills                  bool     `json:"messageMulti-kills"`
@@ -8974,14 +8974,14 @@ type Player struct {
 				WasHeroArchivesTopFloorMURDERCLASSIC                     float64  `json:"was_hero_archives_top_floor_MURDER_CLASSIC"`
 				WinsArchivesTopFloor                                     float64  `json:"wins_archives_top_floor"`
 				WinsArchivesTopFloorMURDERCLASSIC                        float64  `json:"wins_archives_top_floor_MURDER_CLASSIC"`
-				CoinsPickedupWidowSDen                                   float64  `json:"coins_pickedup_widow's_den"`
-				CoinsPickedupWidowSDenMURDERCLASSIC                      float64  `json:"coins_pickedup_widow's_den_MURDER_CLASSIC"`
-				DeathsWidowSDen                                          float64  `json:"deaths_widow's_den"`
-				DeathsWidowSDenMURDERCLASSIC                             float64  `json:"deaths_widow's_den_MURDER_CLASSIC"`
-				GamesWidowSDen                                           float64  `json:"games_widow's_den"`
-				GamesWidowSDenMURDERCLASSIC                              float64  `json:"games_widow's_den_MURDER_CLASSIC"`
-				WinsWidowSDen                                            float64  `json:"wins_widow's_den"`
-				WinsWidowSDenMURDERCLASSIC                               float64  `json:"wins_widow's_den_MURDER_CLASSIC"`
+				CoinsPickedupWidowSDen                                   float64  `json:"coins_pickedup_widow\u0027s_den"`
+				CoinsPickedupWidowSDenMURDERCLASSIC                      float64  `json:"coins_pickedup_widow\u0027s_den_MURDER_CLASSIC"`
+				DeathsWidowSDen                                          float64  `json:"deaths_widow\u0027s_den"`
+				DeathsWidowSDenMURDERCLASSIC                             float64  `json:"deaths_widow\u0027s_den_MURDER_CLASSIC"`
+				GamesWidowSDen                                           float64  `json:"games_widow\u0027s_den"`
+				GamesWidowSDenMURDERCLASSIC                              float64  `json:"games_widow\u0027s_den_MURDER_CLASSIC"`
+				WinsWidowSDen                                            float64  `json:"wins_widow\u0027s_den"`
+				WinsWidowSDenMURDERCLASSIC                               float64  `json:"wins_widow\u0027s_den_MURDER_CLASSIC"`
 				CoinsPickedupSanPeraticoV2                               float64  `json:"coins_pickedup_san_peratico_v2"`
 				CoinsPickedupSanPeraticoV2MURDERCLASSIC                  float64  `json:"coins_pickedup_san_peratico_v2_MURDER_CLASSIC"`
 				DeathsSanPeraticoV2                                      float64  `json:"deaths_san_peratico_v2"`
@@ -11296,7 +11296,7 @@ type Player struct {
 				ARCADEPartyGamesChallenge        float64 `json:"ARCADE__party_games_challenge"`
 				BUILDBATTLEGuesserChallenge      float64 `json:"BUILD_BATTLE__guesser_challenge"`
 				BUILDBATTLETop3Challenge         float64 `json:"BUILD_BATTLE__top_3_challenge"`
-				QUAKECRAFTDonTBlinkChallenge     float64 `json:"QUAKECRAFT__don't_blink_challenge"`
+				QUAKECRAFTDonTBlinkChallenge     float64 `json:"QUAKECRAFT__don\u0027t_blink_challenge"`
 				QUAKECRAFTComboChallenge         float64 `json:"QUAKECRAFT__combo_challenge"`
 				QUAKECRAFTKillingStreakChallenge float64 `json:"QUAKECRAFT__killing_streak_challenge"`
 				PAINTBALLKillStreakChallenge     float64 `json:"PAINTBALL__kill_streak_challenge"`
