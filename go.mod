@@ -1,3 +1,3 @@
-module hypixel.go
+module gopixel
 
 go 1.17
