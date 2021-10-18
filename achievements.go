@@ -7,10 +7,10 @@ import (
 	"hypixel.go/structs"
 )
 
-func (client *Client) Achievements(name string) (structs.Achievements, error) {
+func (client *Client) Achievements() (structs.Achievements, error) {
 	var achievements structs.Achievements
 
-	data, err := get("api.hypixel.net/resources/achievements")
+	data, err := get("api.hypixel.net/resources/achievements?key=" + client.key)
 
 	if err != nil {
 		return achievements, err

@@ -8,24 +8,24 @@ import (
 )
 
 func (client *Client) Friends(name string) (structs.Friends, error) {
-	var Friends structs.Friends
+	var friends structs.Friends
 
 	uuid, err := Uuid(name)
 
 	if err != nil {
-		return Friends, err
+		return friends, err
 	}
 	data, err := get("api.hypixel.net/friends?uuid=" + uuid + "&key=" + client.key)
 
 	if err != nil {
-		return Friends, err
+		return friends, err
 	}
 
-	err = json.Unmarshal(data, &Friends)
+	err = json.Unmarshal(data, &friends)
 
-	if !Friends.Success {
-		err = errors.New(Friends.Cause)
+	if !friends.Success {
+		err = errors.New(friends.Cause)
 	}
 
-	return Friends, err
+	return friends, err
 }
