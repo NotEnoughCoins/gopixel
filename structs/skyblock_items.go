@@ -5,69 +5,69 @@ type SkyblockItems struct {
 		AbilityDamageScaling  float64 `json:"ability_damage_scaling"`
 		CatacombsRequirements struct {
 			Dungeon struct {
-				Level int64  `json:"level"`
-				Type  string `json:"type"`
+				Level float64 `json:"level"`
+				Type  string  `json:"type"`
 			} `json:"dungeon"`
 		} `json:"catacombs_requirements"`
-		Category     string `json:"category"`
-		Color        string `json:"color"`
-		Crystal      string `json:"crystal"`
-		Description  string `json:"description"`
-		DungeonItem  bool   `json:"dungeon_item"`
-		Durability   int64  `json:"durability"`
+		Category     string  `json:"category"`
+		Color        string  `json:"color"`
+		Crystal      string  `json:"crystal"`
+		Description  string  `json:"description"`
+		DungeonItem  bool    `json:"dungeon_item"`
+		Durability   float64 `json:"durability"`
 		Enchantments struct {
-			AquaAffinity  int64 `json:"aqua_affinity"`
-			BigBrain      int64 `json:"big_brain"`
-			CounterStrike int64 `json:"counter_strike"`
-			DepthStrider  int64 `json:"depth_strider"`
-			Efficiency    int64 `json:"efficiency"`
-			FirstStrike   int64 `json:"first_strike"`
-			Power         int64 `json:"power"`
-			Respiration   int64 `json:"respiration"`
-			Scavenger     int64 `json:"scavenger"`
-			Sharpness     int64 `json:"sharpness"`
-			Telekinesis   int64 `json:"telekinesis"`
-			Vampirism     int64 `json:"vampirism"`
-			Vicious       int64 `json:"vicious"`
+			AquaAffinity  float64 `json:"aqua_affinity"`
+			BigBrain      float64 `json:"big_brain"`
+			CounterStrike float64 `json:"counter_strike"`
+			DepthStrider  float64 `json:"depth_strider"`
+			Efficiency    float64 `json:"efficiency"`
+			FirstStrike   float64 `json:"first_strike"`
+			Power         float64 `json:"power"`
+			Respiration   float64 `json:"respiration"`
+			Scavenger     float64 `json:"scavenger"`
+			Sharpness     float64 `json:"sharpness"`
+			Telekinesis   float64 `json:"telekinesis"`
+			Vampirism     float64 `json:"vampirism"`
+			Vicious       float64 `json:"vicious"`
 		} `json:"enchantments"`
 		Essence struct {
-			Costs       []int64 `json:"costs"`
-			EssenceType string  `json:"essence_type"`
+			Costs       []float64 `json:"costs"`
+			EssenceType string    `json:"essence_type"`
 		} `json:"essence"`
-		Furniture      string `json:"furniture"`
-		GearScore      int64  `json:"gear_score"`
-		Generator      string `json:"generator"`
-		GeneratorTier  int64  `json:"generator_tier"`
-		Glowing        bool   `json:"glowing"`
-		ID             string `json:"id"`
-		ItemDurability int64  `json:"item_durability"`
-		Material       string `json:"material"`
-		Name           string `json:"name"`
-		NpcSellPrice   int64  `json:"npc_sell_price"`
-		PrivateIsland  string `json:"private_island"`
+		Furniture      string  `json:"furniture"`
+		GearScore      float64 `json:"gear_score"`
+		Generator      string  `json:"generator"`
+		GeneratorTier  float64 `json:"generator_tier"`
+		Glowing        bool    `json:"glowing"`
+		ID             string  `json:"id"`
+		ItemDurability float64 `json:"item_durability"`
+		Material       string  `json:"material"`
+		Name           string  `json:"name"`
+		NpcSellPrice   float64 `json:"npc_sell_price"`
+		PrivateIsland  string  `json:"private_island"`
 		Requirements   struct {
 			Collection struct {
-				CollectionID string `json:"collection_id"`
-				RequiredTier int64  `json:"required_tier"`
+				CollectionID string  `json:"collection_id"`
+				RequiredTier float64 `json:"required_tier"`
 			} `json:"collection"`
 			Dungeon struct {
-				Level int64  `json:"level"`
-				Type  string `json:"type"`
+				Level float64 `json:"level"`
+				Type  string  `json:"type"`
 			} `json:"dungeon"`
 			DungeonCompletion struct {
-				Tier int64  `json:"tier"`
-				Type string `json:"type"`
+				Tier float64 `json:"tier"`
+				Type string  `json:"type"`
 			} `json:"dungeon_completion"`
 			HeartOfTheMountain struct {
-				Tier int64 `json:"tier"`
+				Tier float64 `json:"tier"`
 			} `json:"heart_of_the_mountain"`
 			Skill struct {
-				Level int64  `json:"level"`
-				Type  string `json:"type"`
+				Level float64 `json:"level"`
+				Type  string  `json:"type"`
 			} `json:"skill"`
 			Slayer struct {
-				Level          int64  `json:"level"`
-				SlayerBossType string `json:"slayer_boss_type"`
+				Level          float64 `json:"level"`
+				SlayerBossType string  `json:"slayer_boss_type"`
 			} `json:"slayer"`
 			TargetPractice struct {
 				Mode string `json:"mode"`
@@ -75,40 +75,40 @@ type SkyblockItems struct {
 		} `json:"requirements"`
 		Skin  string `json:"skin"`
 		Stats struct {
-			AbilityDamagePercent int64   `json:"ABILITY_DAMAGE_PERCENT"`
-			AttackSpeed          int64   `json:"ATTACK_SPEED"`
-			BreakingPower        int64   `json:"BREAKING_POWER"`
-			CriticalChance       int64   `json:"CRITICAL_CHANCE"`
-			CriticalDamage       int64   `json:"CRITICAL_DAMAGE"`
-			Damage               int64   `json:"DAMAGE"`
-			Defense              int64   `json:"DEFENSE"`
-			Ferocity             int64   `json:"FEROCITY"`
-			Health               int64   `json:"HEALTH"`
-			Intelligence         int64   `json:"INTELLIGENCE"`
-			MagicFind            int64   `json:"MAGIC_FIND"`
-			MiningFortune        int64   `json:"MINING_FORTUNE"`
-			MiningSpeed          int64   `json:"MINING_SPEED"`
+			AbilityDamagePercent float64 `json:"ABILITY_DAMAGE_PERCENT"`
+			AttackSpeed          float64 `json:"ATTACK_SPEED"`
+			BreakingPower        float64 `json:"BREAKING_POWER"`
+			CriticalChance       float64 `json:"CRITICAL_CHANCE"`
+			CriticalDamage       float64 `json:"CRITICAL_DAMAGE"`
+			Damage               float64 `json:"DAMAGE"`
+			Defense              float64 `json:"DEFENSE"`
+			Ferocity             float64 `json:"FEROCITY"`
+			Health               float64 `json:"HEALTH"`
+			Intelligence         float64 `json:"INTELLIGENCE"`
+			MagicFind            float64 `json:"MAGIC_FIND"`
+			MiningFortune        float64 `json:"MINING_FORTUNE"`
+			MiningSpeed          float64 `json:"MINING_SPEED"`
 			SeaCreatureChance    float64 `json:"SEA_CREATURE_CHANCE"`
-			Strength             int64   `json:"STRENGTH"`
-			TrueDefense          int64   `json:"TRUE_DEFENSE"`
-			WalkSpeed            int64   `json:"WALK_SPEED"`
-			WeaponAbilityDamage  int64   `json:"WEAPON_ABILITY_DAMAGE"`
+			Strength             float64 `json:"STRENGTH"`
+			TrueDefense          float64 `json:"TRUE_DEFENSE"`
+			WalkSpeed            float64 `json:"WALK_SPEED"`
+			WeaponAbilityDamage  float64 `json:"WEAPON_ABILITY_DAMAGE"`
 		} `json:"stats"`
 		Tier        string `json:"tier"`
 		TieredStats struct {
-			AttackSpeed         []int64 `json:"ATTACK_SPEED"`
-			CriticalChance      []int64 `json:"CRITICAL_CHANCE"`
-			CriticalDamage      []int64 `json:"CRITICAL_DAMAGE"`
-			Damage              []int64 `json:"DAMAGE"`
-			Defense             []int64 `json:"DEFENSE"`
-			Health              []int64 `json:"HEALTH"`
-			Intelligence        []int64 `json:"INTELLIGENCE"`
-			Strength            []int64 `json:"STRENGTH"`
-			WalkSpeed           []int64 `json:"WALK_SPEED"`
-			WeaponAbilityDamage []int64 `json:"WEAPON_ABILITY_DAMAGE"`
+			AttackSpeed         []float64 `json:"ATTACK_SPEED"`
+			CriticalChance      []float64 `json:"CRITICAL_CHANCE"`
+			CriticalDamage      []float64 `json:"CRITICAL_DAMAGE"`
+			Damage              []float64 `json:"DAMAGE"`
+			Defense             []float64 `json:"DEFENSE"`
+			Health              []float64 `json:"HEALTH"`
+			Intelligence        []float64 `json:"INTELLIGENCE"`
+			Strength            []float64 `json:"STRENGTH"`
+			WalkSpeed           []float64 `json:"WALK_SPEED"`
+			WeaponAbilityDamage []float64 `json:"WEAPON_ABILITY_DAMAGE"`
 		} `json:"tiered_stats"`
 		Unstackable bool `json:"unstackable"`
 	} `json:"items"`
-	LastUpdated int64 `json:"lastUpdated"`
-	Success     bool  `json:"success"`
+	LastUpdated float64 `json:"lastUpdated"`
+	Success     bool    `json:"success"`
 }
