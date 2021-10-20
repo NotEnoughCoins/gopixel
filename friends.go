@@ -2,6 +2,7 @@ package gopixel
 
 import (
 	"encoding/json"
+
 	"errors"
 
 	structs "gopixel/structs"

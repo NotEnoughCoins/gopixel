@@ -2,6 +2,7 @@ package gopixel
 
 import (
 	"io/ioutil"
+
 	"net/http"
 )
 
