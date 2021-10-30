@@ -14,7 +14,7 @@ func (client *Client) RecentGames(name string) (structs.RecentGames, error) {
 		return recentGames, err
 	}
 
-	data, err := get("api.hypixel.net/recentgames?uuid=" + uuid + "&key=" + client.key)
+	data, err := get("api.hypixel.net/recentgames?uuid=" + uuid + "&key=" + client.Key)
 	if err != nil {
 		return recentGames, err
 	}

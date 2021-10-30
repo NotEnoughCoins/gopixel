@@ -9,7 +9,7 @@ import (
 func (client *Client) SkyblockActiveAuctions() (structs.SkyblockActiveAuctions, error) {
 	var auctions structs.SkyblockActiveAuctions
 
-	data, err := get("api.hypixel.net/skyblock/auctions?key=" + client.key)
+	data, err := get("api.hypixel.net/skyblock/auctions?key=" + client.Key)
 	if err != nil {
 		return auctions, err
 	}

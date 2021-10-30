@@ -9,7 +9,7 @@ import (
 func (client *Client) Boosters() (structs.Boosters, error) {
 	var boosters structs.Boosters
 
-	data, err := get("api.hypixel.net/boosters?key=" + client.key)
+	data, err := get("api.hypixel.net/boosters?key=" + client.Key)
 	if err != nil {
 		return boosters, err
 	}

@@ -17,7 +17,7 @@ func (client *Client) RankedSkywars(name string) (structs.RankedSkywars, error) 
 		return rankedSkywars, err
 	}
 
-	data, err := get("api.hypixel.net/player/ranked/skywars?uuid=" + uuid + "&key=" + client.key)
+	data, err := get("api.hypixel.net/player/ranked/skywars?uuid=" + uuid + "&key=" + client.Key)
 
 	if err != nil {
 		return rankedSkywars, err

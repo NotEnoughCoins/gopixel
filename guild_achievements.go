@@ -9,7 +9,7 @@ import (
 func (c *Client) GuildAchievements() (structs.GuildAchievements, error) {
 	var guildAchievements structs.GuildAchievements
 
-	data, err := get("api.hypixel.net/resources/guilds/achievements?key=" + c.key)
+	data, err := get("api.hypixel.net/resources/guilds/achievements?key=" + c.Key)
 	if err != nil {
 		return guildAchievements, err
 	}

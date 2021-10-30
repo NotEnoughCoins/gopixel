@@ -16,7 +16,7 @@ func (client *Client) PlayerStatus(name string) (structs.PlayerStatus, error) {
 	if err != nil {
 		return playerStatus, err
 	}
-	data, err := get("api.hypixel.net/status?uuid=" + uuid + "&key=" + client.key)
+	data, err := get("api.hypixel.net/status?uuid=" + uuid + "&key=" + client.Key)
 
 	if err != nil {
 		return playerStatus, err

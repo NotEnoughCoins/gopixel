@@ -11,7 +11,7 @@ import (
 func (client *Client) KeyInfo() (structs.Key, error) {
 	var key structs.Key
 
-	data, err := get("api.hypixel.net/key?key=" + client.key)
+	data, err := get("api.hypixel.net/key?key=" + client.Key)
 	if err != nil {
 		return key, err
 	}

@@ -11,7 +11,7 @@ import (
 func (client *Client) BazaarData() (structs.Bazaar, error) {
 	var bazaar structs.Bazaar
 
-	data, err := get("api.hypixel.net/skyblock/bazaar?key=" + client.key)
+	data, err := get("api.hypixel.net/skyblock/bazaar?key=" + client.Key)
 	if err != nil {
 		return bazaar, err
 	}

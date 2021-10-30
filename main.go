@@ -7,11 +7,11 @@ import (
 )
 
 type Client struct {
-	key string
+	Key string
 }
 
 func NewClient(key string) *Client {
-	return &Client{key: key}
+	return &Client{Key: key}
 }
 
 func get(url string) ([]byte, error) {

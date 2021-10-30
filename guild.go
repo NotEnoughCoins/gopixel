@@ -11,7 +11,7 @@ import (
 func (client *Client) GuildById(id string) (structs.Guild, error) {
 	var guild structs.Guild
 
-	data, err := get("api.hypixel.net/guild?id=" + id + "&key=" + client.key)
+	data, err := get("api.hypixel.net/guild?id=" + id + "&key=" + client.Key)
 	if err != nil {
 		return guild, err
 	}
@@ -28,7 +28,7 @@ func (client *Client) GuildById(id string) (structs.Guild, error) {
 func (client *Client) GuildByName(name string) (structs.Guild, error) {
 	var guild structs.Guild
 
-	data, err := get("api.hypixel.net/guild?name=" + name + "&key=" + client.key)
+	data, err := get("api.hypixel.net/guild?name=" + name + "&key=" + client.Key)
 	if err != nil {
 		return guild, err
 	}
@@ -49,7 +49,7 @@ func (client *Client) GuildByPlayer(player string) (structs.Guild, error) {
 		return guild, err
 	}
 
-	data, err := get("api.hypixel.net/guild?player=" + uuid + "&key=" + client.key)
+	data, err := get("api.hypixel.net/guild?player=" + uuid + "&key=" + client.Key)
 	if err != nil {
 		return guild, err
 	}

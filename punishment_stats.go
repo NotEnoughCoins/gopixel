@@ -9,7 +9,7 @@ import (
 func (client *Client) PunishmentStats() (structs.PunishmentStats, error) {
 	var stats structs.PunishmentStats
 
-	data, err := get("api.hypixel.net/punishmentstats?key=" + client.key)
+	data, err := get("api.hypixel.net/punishmentstats?key=" + client.Key)
 	if err != nil {
 		return stats, err
 	}

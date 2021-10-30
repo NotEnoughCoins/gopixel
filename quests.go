@@ -9,7 +9,7 @@ import (
 func (client *Client) Quests() (structs.Quests, error) {
 	var quests structs.Quests
 
-	data, err := get("api.hypixel.net/resources/quests?key=" + client.key)
+	data, err := get("api.hypixel.net/resources/quests?key=" + client.Key)
 	if err != nil {
 		return quests, err
 	}

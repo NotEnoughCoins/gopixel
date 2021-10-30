@@ -9,7 +9,7 @@ import (
 func (client *Client) Leaderboards() (structs.Leaderboards, error) {
 	var leaderboards structs.Leaderboards
 
-	data, err := get("api.hypixel.net/leaderboards?key=" + client.key)
+	data, err := get("api.hypixel.net/leaderboards?key=" + client.Key)
 	if err != nil {
 		return leaderboards, err
 	}

@@ -6,10 +6,10 @@ import (
 	structs "github.com/comblock/gopixel/structs"
 )
 
-func (c *Client) GuildPermissions() (structs.GuildPermissions, error) {
+func (client *Client) GuildPermissions() (structs.GuildPermissions, error) {
 	var guildPermissions structs.GuildPermissions
 
-	data, err := get("api.hypixel.net/resources/guilds/permissions?key=" + c.key)
+	data, err := get("api.hypixel.net/resources/guilds/permissions?key=" + client.Key)
 	if err != nil {
 		return guildPermissions, err
 	}

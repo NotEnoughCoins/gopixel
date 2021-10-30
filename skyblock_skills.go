@@ -9,7 +9,7 @@ import (
 func (client *Client) SkyblockSkills() (structs.SkyblockSkills, error) {
 	var skyblockSkills structs.SkyblockSkills
 
-	data, err := get("api.hypixel.net/resources/skyblock/skills?key=" + client.key)
+	data, err := get("api.hypixel.net/resources/skyblock/skills?key=" + client.Key)
 	if err != nil {
 		return skyblockSkills, err
 	}

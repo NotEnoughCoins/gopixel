@@ -17,7 +17,7 @@ func (client *Client) SkyblockProfiles(name string) (structs.SkyblockProfiles, e
 		return skyblockProfile, err
 	}
 
-	data, err := get("api.hypixel.net/skyblock/profiles?uuid=" + uuid + "&key=" + client.key)
+	data, err := get("api.hypixel.net/skyblock/profiles?uuid=" + uuid + "&key=" + client.Key)
 
 	if err != nil {
 		return skyblockProfile, err

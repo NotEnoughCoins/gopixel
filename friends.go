@@ -16,7 +16,7 @@ func (client *Client) Friends(name string) (structs.Friends, error) {
 	if err != nil {
 		return friends, err
 	}
-	data, err := get("api.hypixel.net/friends?uuid=" + uuid + "&key=" + client.key)
+	data, err := get("api.hypixel.net/friends?uuid=" + uuid + "&key=" + client.Key)
 
 	if err != nil {
 		return friends, err

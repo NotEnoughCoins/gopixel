@@ -11,7 +11,7 @@ import (
 func (client *Client) SkyblockProfile(profile string) (structs.SkyblockProfile, error) {
 	var skyblockProfile structs.SkyblockProfile
 
-	data, err := get("api.hypixel.net/skyblock/profile?profile=" + profile + "&key=" + client.key)
+	data, err := get("api.hypixel.net/skyblock/profile?profile=" + profile + "&key=" + client.Key)
 
 	if err != nil {
 		return skyblockProfile, err

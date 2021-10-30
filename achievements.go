@@ -11,7 +11,7 @@ import (
 func (client *Client) Achievements() (structs.Achievements, error) {
 	var achievements structs.Achievements
 
-	data, err := get("api.hypixel.net/resources/achievements?key=" + client.key)
+	data, err := get("api.hypixel.net/resources/achievements?key=" + client.Key)
 
 	if err != nil {
 		return achievements, err

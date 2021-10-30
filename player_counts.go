@@ -8,7 +8,7 @@ import (
 
 func (client *Client) PlayerCounts() (structs.PlayerCounts, error) {
 	var counts structs.PlayerCounts
-	data, err := get("api.hypixel.net/counts?key=" + client.key)
+	data, err := get("api.hypixel.net/counts?key=" + client.Key)
 	if err != nil {
 		return counts, err
 	}
