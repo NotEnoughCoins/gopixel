@@ -3,7 +3,7 @@ package gopixel
 import (
 	"encoding/json"
 
-	structs "gopixel/structs"
+	structs "github.com/comblock/gopixel/structs"
 )
 
 func (c *Client) GuildAchievements() (structs.GuildAchievements, error) {

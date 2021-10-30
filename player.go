@@ -5,7 +5,7 @@ import (
 
 	"errors"
 
-	structs "gopixel/structs"
+	structs "github.com/comblock/gopixel/structs"
 )
 
 func Uuid(name string) (string, error) {

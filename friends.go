@@ -5,7 +5,7 @@ import (
 
 	"errors"
 
-	structs "gopixel/structs"
+	structs "github.com/comblock/gopixel/structs"
 )
 
 func (client *Client) Friends(name string) (structs.Friends, error) {

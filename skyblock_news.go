@@ -2,7 +2,8 @@ package gopixel
 
 import (
 	"encoding/json"
-	"gopixel/structs"
+
+	"github.com/comblock/gopixel/structs"
 )
 
 func (c *Client) SkyblockNews() (structs.SkyblockNews, error) {

@@ -5,7 +5,7 @@ import (
 
 	"errors"
 
-	"gopixel/structs"
+	"github.com/comblock/gopixel/structs"
 )
 
 func (client *Client) Achievements() (structs.Achievements, error) {
