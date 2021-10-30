@@ -3,6 +3,7 @@
 ![Go Report Card](https://img.shields.io/badge/go%20report-A-red.svg?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/comblock/gopixel?style=for-the-badge)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/comblock/gopixel?color=yellow&style=for-the-badge)
+
 A simple and complete[^1] wrapper for the hypixel API
 
 ## Key features 
