@@ -1,6 +1,7 @@
 # Gopixel
+[![GoDoc](https://img.shields.io/badge/Godoc-Reference-%2300ADD8?style=for-the-badge)](https://godoc.org/github.com/comblock/gopixel)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/comblock/gopixel?style=for-the-badge)
-![Go Report Card](https://img.shields.io/badge/go%20report-A-red.svg?style=for-the-badge)
+[![Go Report Card](https://img.shields.io/badge/go%20report-A-red.svg?style=for-the-badge)](https://goreportcard.com/report/github.com/comblock/gopixel)
 ![GitHub](https://img.shields.io/github/license/comblock/gopixel?style=for-the-badge)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/comblock/gopixel?color=yellow&style=for-the-badge)
 
