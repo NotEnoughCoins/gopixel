@@ -5,7 +5,7 @@ import (
 
 	"errors"
 
-	structs "github.com/comblock/gopixel/structs"
+	"github.com/comblock/gopixel/structs"
 )
 
 func Uuid(name string) (string, error) {
@@ -29,6 +29,52 @@ func Uuid(name string) (string, error) {
 
 }
 
+func (client *Client) Friends(name string) (structs.Friends, error) {
+	var friends structs.Friends
+
+	uuid, err := Uuid(name)
+
+	if err != nil {
+		return friends, err
+	}
+	data, err := get("api.hypixel.net/friends?uuid=" + uuid + "&key=" + client.Key)
+
+	if err != nil {
+		return friends, err
+	}
+
+	err = json.Unmarshal(data, &friends)
+
+	if !friends.Success {
+		err = errors.New(friends.Cause)
+	}
+
+	return friends, err
+}
+
+func (client *Client) PlayerStatus(name string) (structs.PlayerStatus, error) {
+	var playerStatus structs.PlayerStatus
+
+	uuid, err := Uuid(name)
+
+	if err != nil {
+		return playerStatus, err
+	}
+	data, err := get("api.hypixel.net/status?uuid=" + uuid + "&key=" + client.Key)
+
+	if err != nil {
+		return playerStatus, err
+	}
+
+	err = json.Unmarshal(data, &playerStatus)
+
+	if !playerStatus.Success {
+		err = errors.New(playerStatus.Cause)
+	}
+
+	return playerStatus, err
+}
+
 func (client *Client) PlayerData(name string) (structs.Player, error) {
 	var player structs.Player
 
@@ -50,4 +96,22 @@ func (client *Client) PlayerData(name string) (structs.Player, error) {
 	}
 
 	return player, err
+}
+
+func (client *Client) RecentGames(name string) (structs.RecentGames, error) {
+	var recentGames structs.RecentGames
+
+	uuid, err := Uuid(name)
+	if err != nil {
+		return recentGames, err
+	}
+
+	data, err := get("api.hypixel.net/recentgames?uuid=" + uuid + "&key=" + client.Key)
+	if err != nil {
+		return recentGames, err
+	}
+
+	err = json.Unmarshal(data, &recentGames)
+
+	return recentGames, err
 }
