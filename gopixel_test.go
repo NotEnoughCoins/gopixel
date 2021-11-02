@@ -41,6 +41,14 @@ func getConfig() Config {
 var config Config = getConfig()
 var client *Client = NewClient(config.Key)
 
+func TestKeyData(t *testing.T) {
+	key, err := client.KeyData()
+	if err != nil {
+		t.Error((err))
+	}
+	fmt.Println(key)
+}
+
 func TestPlayerData(t *testing.T) {
 	player, err := client.PlayerData(config.Player)
 	if err != nil {
@@ -57,16 +65,8 @@ func TestAchievements(t *testing.T) {
 	fmt.Println(achievements)
 }
 
-func TestKey(t *testing.T) {
-	key, err := client.KeyInfo()
-	if err != nil {
-		t.Error((err))
-	}
-	fmt.Println(key)
-}
-
-func TestBazaarData(t *testing.T) {
-	bazaar, err := client.BazaarData()
+func TestBazaar(t *testing.T) {
+	bazaar, err := client.Bazaar()
 	if err != nil {
 		t.Error(err)
 	}
