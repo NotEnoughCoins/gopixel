@@ -8,6 +8,7 @@ import (
 	"github.com/comblock/gopixel/structs"
 )
 
+// Method to get a list of guild achievements
 func (c *Client) GuildAchievements() (structs.GuildAchievements, error) {
 	var guildAchievements structs.GuildAchievements
 
@@ -21,6 +22,7 @@ func (c *Client) GuildAchievements() (structs.GuildAchievements, error) {
 	return guildAchievements, err
 }
 
+// Method to get a list of guild permissions
 func (client *Client) GuildPermissions() (structs.GuildPermissions, error) {
 	var guildPermissions structs.GuildPermissions
 
@@ -34,6 +36,7 @@ func (client *Client) GuildPermissions() (structs.GuildPermissions, error) {
 	return guildPermissions, err
 }
 
+// Method to get a guild by its id
 func (client *Client) GuildById(id string) (structs.Guild, error) {
 	var guild structs.Guild
 
@@ -51,6 +54,7 @@ func (client *Client) GuildById(id string) (structs.Guild, error) {
 	return guild, err
 }
 
+// Method to get a guild by its name
 func (client *Client) GuildByName(name string) (structs.Guild, error) {
 	var guild structs.Guild
 
@@ -67,6 +71,7 @@ func (client *Client) GuildByName(name string) (structs.Guild, error) {
 	return guild, err
 }
 
+// Method to get a guild by a player
 func (client *Client) GuildByPlayer(player string) (structs.Guild, error) {
 	var guild structs.Guild
 
