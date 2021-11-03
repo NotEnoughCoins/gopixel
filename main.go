@@ -10,10 +10,12 @@ type Client struct {
 	Key string
 }
 
+// Returns a client object
 func NewClient(key string) *Client {
 	return &Client{Key: key}
 }
 
+// Internal function to handle http GET requests
 func get(url string) ([]byte, error) {
 	resp, err := http.Get("https://" + url)
 

@@ -201,6 +201,7 @@ func TestSkyblockSkills(t *testing.T) {
 	fmt.Println(skills)
 }
 
+// If this test fails with the error message "No result was found" it means that the player doesn't have any data and NOT that the function is broken
 func TestRankedSkywars(t *testing.T) {
 	data, err := client.RankedSkywars(config.RankedSkywarsPlayer)
 	if err != nil {

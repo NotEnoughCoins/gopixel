@@ -8,6 +8,7 @@ import (
 	"github.com/comblock/gopixel/structs"
 )
 
+// Method to get the bazaar data
 func (client *Client) Bazaar() (structs.Bazaar, error) {
 	var bazaar structs.Bazaar
 
@@ -25,6 +26,7 @@ func (client *Client) Bazaar() (structs.Bazaar, error) {
 	return bazaar, err
 }
 
+// Method to get the active skyblock auctions
 func (client *Client) SkyblockActiveAuctions() (structs.SkyblockActiveAuctions, error) {
 	var auctions structs.SkyblockActiveAuctions
 
@@ -38,6 +40,7 @@ func (client *Client) SkyblockActiveAuctions() (structs.SkyblockActiveAuctions, 
 	return auctions, err
 }
 
+// Method to get the auctions of a player
 func (client *Client) SkyblockAuctionByPlayer(player string) (structs.SkyblockAuctions, error) {
 	var auctions structs.SkyblockAuctions
 
@@ -56,6 +59,7 @@ func (client *Client) SkyblockAuctionByPlayer(player string) (structs.SkyblockAu
 	return auctions, err
 }
 
+// Method to get an auction by its uuid
 func (client *Client) SkyblockAuctionByUuid(uuid string) (structs.SkyblockAuctions, error) {
 	var auctions structs.SkyblockAuctions
 
@@ -69,6 +73,7 @@ func (client *Client) SkyblockAuctionByUuid(uuid string) (structs.SkyblockAuctio
 	return auctions, err
 }
 
+// Method to get an auction by a profile uuid
 func (client *Client) SkyblockAuctionByProfileUuid(uuid string) (structs.SkyblockAuctions, error) {
 	var auctions structs.SkyblockAuctions
 
@@ -82,6 +87,7 @@ func (client *Client) SkyblockAuctionByProfileUuid(uuid string) (structs.Skybloc
 	return auctions, err
 }
 
+// Method to get a list of the skyblock collections
 func (client *Client) SkyblockCollections() (structs.SkyblockCollections, error) {
 	var skyblockCollections structs.SkyblockCollections
 
@@ -95,6 +101,7 @@ func (client *Client) SkyblockCollections() (structs.SkyblockCollections, error)
 	return skyblockCollections, err
 }
 
+// Method to get the ended auctions
 func (client *Client) SkyblockEndedAuctions() (structs.SkyblockEndedAuctions, error) {
 	var auctions structs.SkyblockEndedAuctions
 
@@ -108,6 +115,7 @@ func (client *Client) SkyblockEndedAuctions() (structs.SkyblockEndedAuctions, er
 	return auctions, err
 }
 
+// Method to get a list of the skyblock items
 func (client *Client) SkyblockItems() (structs.SkyblockItems, error) {
 	var skyblockItems structs.SkyblockItems
 
@@ -121,6 +129,7 @@ func (client *Client) SkyblockItems() (structs.SkyblockItems, error) {
 	return skyblockItems, err
 }
 
+// Method to get the skyblock news
 func (c *Client) SkyblockNews() (structs.SkyblockNews, error) {
 	var news structs.SkyblockNews
 
@@ -134,6 +143,7 @@ func (c *Client) SkyblockNews() (structs.SkyblockNews, error) {
 	return news, err
 }
 
+// Method to get a skyblock profile by its uuid
 func (client *Client) SkyblockProfile(profile string) (structs.SkyblockProfile, error) {
 	var skyblockProfile structs.SkyblockProfile
 
@@ -152,6 +162,7 @@ func (client *Client) SkyblockProfile(profile string) (structs.SkyblockProfile, 
 	return skyblockProfile, err
 }
 
+// Method to get the skyblock profiles of a player
 func (client *Client) SkyblockProfiles(name string) (structs.SkyblockProfiles, error) {
 	var skyblockProfile structs.SkyblockProfiles
 
@@ -176,6 +187,7 @@ func (client *Client) SkyblockProfiles(name string) (structs.SkyblockProfiles, e
 	return skyblockProfile, err
 }
 
+// Method to get a list of the skills in skyblock
 func (client *Client) SkyblockSkills() (structs.SkyblockSkills, error) {
 	var skyblockSkills structs.SkyblockSkills
 

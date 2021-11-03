@@ -8,6 +8,7 @@ import (
 	"github.com/comblock/gopixel/structs"
 )
 
+// Method to get the global achievements
 func (client *Client) Achievements() (structs.Achievements, error) {
 	var achievements structs.Achievements
 
@@ -26,6 +27,7 @@ func (client *Client) Achievements() (structs.Achievements, error) {
 	return achievements, err
 }
 
+// Method to get a list of the games
 func (client *Client) Games() (structs.Games, error) {
 	var games structs.Games
 
@@ -39,6 +41,7 @@ func (client *Client) Games() (structs.Games, error) {
 	return games, err
 }
 
+// Method to get the active boosters
 func (client *Client) Boosters() (structs.Boosters, error) {
 	var boosters structs.Boosters
 
@@ -52,6 +55,7 @@ func (client *Client) Boosters() (structs.Boosters, error) {
 	return boosters, err
 }
 
+// Method to get a list of all challenges
 func (client *Client) Challenges() (structs.Challenges, error) {
 	var challenges structs.Challenges
 
@@ -65,6 +69,7 @@ func (client *Client) Challenges() (structs.Challenges, error) {
 	return challenges, err
 }
 
+// Method to check if a key is valid and
 func (client *Client) KeyData() (structs.Key, error) {
 	var key structs.Key
 
@@ -82,6 +87,7 @@ func (client *Client) KeyData() (structs.Key, error) {
 	return key, err
 }
 
+// Method to get the current player counts
 func (client *Client) PlayerCounts() (structs.PlayerCounts, error) {
 	var counts structs.PlayerCounts
 	data, err := get("api.hypixel.net/counts?key=" + client.Key)
@@ -94,6 +100,7 @@ func (client *Client) PlayerCounts() (structs.PlayerCounts, error) {
 	return counts, err
 }
 
+// Method to get the current leaderboards
 func (client *Client) Leaderboards() (structs.Leaderboards, error) {
 	var leaderboards structs.Leaderboards
 
@@ -107,6 +114,7 @@ func (client *Client) Leaderboards() (structs.Leaderboards, error) {
 	return leaderboards, err
 }
 
+// Method to get the punishment statistics
 func (client *Client) PunishmentStats() (structs.PunishmentStats, error) {
 	var stats structs.PunishmentStats
 
@@ -120,6 +128,7 @@ func (client *Client) PunishmentStats() (structs.PunishmentStats, error) {
 	return stats, err
 }
 
+// Method to get the quests
 func (client *Client) Quests() (structs.Quests, error) {
 	var quests structs.Quests
 
@@ -133,6 +142,7 @@ func (client *Client) Quests() (structs.Quests, error) {
 	return quests, err
 }
 
+// Method to get the ranked skywars data of a player. Will return an error if no data is found
 func (client *Client) RankedSkywars(name string) (structs.RankedSkywars, error) {
 	var rankedSkywars structs.RankedSkywars
 
