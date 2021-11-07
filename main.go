@@ -1,6 +1,7 @@
 package gopixel
 
 import (
+	"errors"
 	"io/ioutil"
 
 	"net/http"
@@ -17,15 +18,22 @@ func NewClient(key string) *Client {
 
 // Internal function to handle http GET requests
 func get(url string) ([]byte, error) {
-	resp, err := http.Get("https://" + url)
+	for i := 0; i < 10; i++ {
+		resp, err := http.Get("https://" + url)
 
-	if err != nil {
-		return nil, nil
+		if err != nil {
+			return nil, nil
+		}
+
+		defer resp.Body.Close()
+
+		if resp.StatusCode != 200 {
+			continue
+		}
+
+		body, err := ioutil.ReadAll(resp.Body)
+
+		return body, err
 	}
-
-	defer resp.Body.Close()
-
-	body, err := ioutil.ReadAll(resp.Body)
-
-	return body, err
+	return make([]byte, 0), errors.New("server side error")
 }
