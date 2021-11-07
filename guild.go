@@ -9,10 +9,10 @@ import (
 )
 
 // Method to get a list of guild achievements
-func (c *Client) GuildAchievements() (structs.GuildAchievements, error) {
+func (client *Client) GuildAchievements() (structs.GuildAchievements, error) {
 	var guildAchievements structs.GuildAchievements
 
-	data, err := get("api.hypixel.net/resources/guilds/achievements?key=" + c.Key)
+	data, err := client.get("api.hypixel.net/resources/guilds/achievements?key=" + client.Key)
 	if err != nil {
 		return guildAchievements, err
 	}
@@ -26,7 +26,7 @@ func (c *Client) GuildAchievements() (structs.GuildAchievements, error) {
 func (client *Client) GuildPermissions() (structs.GuildPermissions, error) {
 	var guildPermissions structs.GuildPermissions
 
-	data, err := get("api.hypixel.net/resources/guilds/permissions?key=" + client.Key)
+	data, err := client.get("api.hypixel.net/resources/guilds/permissions?key=" + client.Key)
 	if err != nil {
 		return guildPermissions, err
 	}
@@ -40,7 +40,7 @@ func (client *Client) GuildPermissions() (structs.GuildPermissions, error) {
 func (client *Client) GuildById(id string) (structs.Guild, error) {
 	var guild structs.Guild
 
-	data, err := get("api.hypixel.net/guild?id=" + id + "&key=" + client.Key)
+	data, err := client.get("api.hypixel.net/guild?id=" + id + "&key=" + client.Key)
 	if err != nil {
 		return guild, err
 	}
@@ -58,7 +58,7 @@ func (client *Client) GuildById(id string) (structs.Guild, error) {
 func (client *Client) GuildByName(name string) (structs.Guild, error) {
 	var guild structs.Guild
 
-	data, err := get("api.hypixel.net/guild?name=" + name + "&key=" + client.Key)
+	data, err := client.get("api.hypixel.net/guild?name=" + name + "&key=" + client.Key)
 	if err != nil {
 		return guild, err
 	}
@@ -75,12 +75,12 @@ func (client *Client) GuildByName(name string) (structs.Guild, error) {
 func (client *Client) GuildByPlayer(player string) (structs.Guild, error) {
 	var guild structs.Guild
 
-	uuid, err := Uuid(player)
+	uuid, err := client.Uuid(player)
 	if err != nil {
 		return guild, err
 	}
 
-	data, err := get("api.hypixel.net/guild?player=" + uuid + "&key=" + client.Key)
+	data, err := client.get("api.hypixel.net/guild?player=" + uuid + "&key=" + client.Key)
 	if err != nil {
 		return guild, err
 	}

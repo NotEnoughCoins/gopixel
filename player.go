@@ -9,8 +9,8 @@ import (
 )
 
 // Function to convert a player name to uuid using the mojang api
-func Uuid(name string) (string, error) {
-	data, err := get("api.mojang.com/users/profiles/minecraft/" + name)
+func (client *Client) Uuid(name string) (string, error) {
+	data, err := client.get("api.mojang.com/users/profiles/minecraft/" + name)
 
 	var mojangPlayer struct {
 		Name string `json:"name"`
@@ -31,12 +31,12 @@ func Uuid(name string) (string, error) {
 func (client *Client) Friends(name string) (structs.Friends, error) {
 	var friends structs.Friends
 
-	uuid, err := Uuid(name)
+	uuid, err := client.Uuid(name)
 
 	if err != nil {
 		return friends, err
 	}
-	data, err := get("api.hypixel.net/friends?uuid=" + uuid + "&key=" + client.Key)
+	data, err := client.get("api.hypixel.net/friends?uuid=" + uuid + "&key=" + client.Key)
 
 	if err != nil {
 		return friends, err
@@ -55,12 +55,12 @@ func (client *Client) Friends(name string) (structs.Friends, error) {
 func (client *Client) PlayerStatus(name string) (structs.PlayerStatus, error) {
 	var playerStatus structs.PlayerStatus
 
-	uuid, err := Uuid(name)
+	uuid, err := client.Uuid(name)
 
 	if err != nil {
 		return playerStatus, err
 	}
-	data, err := get("api.hypixel.net/status?uuid=" + uuid + "&key=" + client.Key)
+	data, err := client.get("api.hypixel.net/status?uuid=" + uuid + "&key=" + client.Key)
 
 	if err != nil {
 		return playerStatus, err
@@ -79,12 +79,12 @@ func (client *Client) PlayerStatus(name string) (structs.PlayerStatus, error) {
 func (client *Client) PlayerData(name string) (structs.Player, error) {
 	var player structs.Player
 
-	uuid, err := Uuid(name)
+	uuid, err := client.Uuid(name)
 
 	if err != nil {
 		return player, err
 	}
-	data, err := get("api.hypixel.net/player?uuid=" + uuid + "&key=" + client.Key)
+	data, err := client.get("api.hypixel.net/player?uuid=" + uuid + "&key=" + client.Key)
 
 	if err != nil {
 		return player, err
@@ -103,12 +103,12 @@ func (client *Client) PlayerData(name string) (structs.Player, error) {
 func (client *Client) RecentGames(name string) (structs.RecentGames, error) {
 	var recentGames structs.RecentGames
 
-	uuid, err := Uuid(name)
+	uuid, err := client.Uuid(name)
 	if err != nil {
 		return recentGames, err
 	}
 
-	data, err := get("api.hypixel.net/recentgames?uuid=" + uuid + "&key=" + client.Key)
+	data, err := client.get("api.hypixel.net/recentgames?uuid=" + uuid + "&key=" + client.Key)
 	if err != nil {
 		return recentGames, err
 	}
