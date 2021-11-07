@@ -13,6 +13,7 @@ import (
 // The config struct with all of the required variables
 type Config struct {
 	Key                 string `json:"key"`
+	Retries             int    `json:"retries"`
 	Player              string `json:"player"`
 	SkyblockProfile     string `json:"skyblock_profile"`
 	RankedSkywarsPlayer string `json:"ranked_skywars_player"`
@@ -39,7 +40,7 @@ func getConfig() Config {
 }
 
 var config Config = getConfig()
-var client *Client = NewClient(config.Key)
+var client *Client = NewClient(config.Key, config.Retries)
 
 func TestKeyData(t *testing.T) {
 	key, err := client.KeyData()

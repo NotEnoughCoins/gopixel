@@ -12,7 +12,7 @@ import (
 func (client *Client) Achievements() (structs.Achievements, error) {
 	var achievements structs.Achievements
 
-	data, err := get("api.hypixel.net/resources/achievements?key=" + client.Key)
+	data, err := client.get("api.hypixel.net/resources/achievements?key=" + client.Key)
 
 	if err != nil {
 		return achievements, err
@@ -31,7 +31,7 @@ func (client *Client) Achievements() (structs.Achievements, error) {
 func (client *Client) Games() (structs.Games, error) {
 	var games structs.Games
 
-	data, err := get("api.hypixel.net/resources/games?key=" + client.Key)
+	data, err := client.get("api.hypixel.net/resources/games?key=" + client.Key)
 	if err != nil {
 		return games, err
 	}
@@ -45,7 +45,7 @@ func (client *Client) Games() (structs.Games, error) {
 func (client *Client) Boosters() (structs.Boosters, error) {
 	var boosters structs.Boosters
 
-	data, err := get("api.hypixel.net/boosters?key=" + client.Key)
+	data, err := client.get("api.hypixel.net/boosters?key=" + client.Key)
 	if err != nil {
 		return boosters, err
 	}
@@ -59,7 +59,7 @@ func (client *Client) Boosters() (structs.Boosters, error) {
 func (client *Client) Challenges() (structs.Challenges, error) {
 	var challenges structs.Challenges
 
-	data, err := get("api.hypixel.net/resources/challenges?challenges=" + client.Key)
+	data, err := client.get("api.hypixel.net/resources/challenges?challenges=" + client.Key)
 	if err != nil {
 		return challenges, err
 	}
@@ -73,7 +73,7 @@ func (client *Client) Challenges() (structs.Challenges, error) {
 func (client *Client) KeyData() (structs.Key, error) {
 	var key structs.Key
 
-	data, err := get("api.hypixel.net/key?key=" + client.Key)
+	data, err := client.get("api.hypixel.net/key?key=" + client.Key)
 	if err != nil {
 		return key, err
 	}
@@ -90,7 +90,7 @@ func (client *Client) KeyData() (structs.Key, error) {
 // Method to get the current player counts
 func (client *Client) PlayerCounts() (structs.PlayerCounts, error) {
 	var counts structs.PlayerCounts
-	data, err := get("api.hypixel.net/counts?key=" + client.Key)
+	data, err := client.get("api.hypixel.net/counts?key=" + client.Key)
 	if err != nil {
 		return counts, err
 	}
@@ -104,7 +104,7 @@ func (client *Client) PlayerCounts() (structs.PlayerCounts, error) {
 func (client *Client) Leaderboards() (structs.Leaderboards, error) {
 	var leaderboards structs.Leaderboards
 
-	data, err := get("api.hypixel.net/leaderboards?key=" + client.Key)
+	data, err := client.get("api.hypixel.net/leaderboards?key=" + client.Key)
 	if err != nil {
 		return leaderboards, err
 	}
@@ -118,7 +118,7 @@ func (client *Client) Leaderboards() (structs.Leaderboards, error) {
 func (client *Client) PunishmentStats() (structs.PunishmentStats, error) {
 	var stats structs.PunishmentStats
 
-	data, err := get("api.hypixel.net/punishmentstats?key=" + client.Key)
+	data, err := client.get("api.hypixel.net/punishmentstats?key=" + client.Key)
 	if err != nil {
 		return stats, err
 	}
@@ -132,7 +132,7 @@ func (client *Client) PunishmentStats() (structs.PunishmentStats, error) {
 func (client *Client) Quests() (structs.Quests, error) {
 	var quests structs.Quests
 
-	data, err := get("api.hypixel.net/resources/quests?key=" + client.Key)
+	data, err := client.get("api.hypixel.net/resources/quests?key=" + client.Key)
 	if err != nil {
 		return quests, err
 	}
@@ -146,13 +146,13 @@ func (client *Client) Quests() (structs.Quests, error) {
 func (client *Client) RankedSkywars(name string) (structs.RankedSkywars, error) {
 	var rankedSkywars structs.RankedSkywars
 
-	uuid, err := Uuid(name)
+	uuid, err := client.Uuid(name)
 
 	if err != nil {
 		return rankedSkywars, err
 	}
 
-	data, err := get("api.hypixel.net/player/ranked/skywars?uuid=" + uuid + "&key=" + client.Key)
+	data, err := client.get("api.hypixel.net/player/ranked/skywars?uuid=" + uuid + "&key=" + client.Key)
 
 	if err != nil {
 		return rankedSkywars, err
