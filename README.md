@@ -22,7 +22,7 @@ go get github.com/comblock/gopixel
 ```go
 import "github.com/comblock/gopixel"
 
-var client *gopixel.Client = gopixel.NewClient(<your API key>)
+var client *gopixel.Client = gopixel.NewClient(<your API key>, <Amount of retries (0 is default value)>)
 
 ```
 
