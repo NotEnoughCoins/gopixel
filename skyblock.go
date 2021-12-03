@@ -2,6 +2,7 @@ package gopixel
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"errors"
 
@@ -26,11 +27,43 @@ func (client *Client) Bazaar() (structs.Bazaar, error) {
 	return bazaar, err
 }
 
-// Method to get the active skyblock auctions
+// Method to get the active skyblock auctions DO NOT USE THIS WITHOUT CACHING, it will send out a lot of requests (50 or so) and this can rate limit your api key very quickly
+// it also takes quite a long time to run
 func (client *Client) SkyblockActiveAuctions() (structs.SkyblockActiveAuctions, error) {
 	var auctions structs.SkyblockActiveAuctions
+	var firstPage structs.SkyblockActiveAuctionsPage
 
 	data, err := client.get("api.hypixel.net/skyblock/auctions?key=" + client.Key)
+	if err != nil {
+		return auctions, err
+	}
+
+	err = json.Unmarshal(data, &firstPage)
+
+	auctions.Auctions = append(auctions.Auctions, firstPage.Auctions...)
+
+	for i := firstPage.Page + 1; i < firstPage.TotalPages; i++ {
+		var page structs.SkyblockActiveAuctionsPage
+
+		data, err := client.get(fmt.Sprintf("api.hypixel.net/skyblock/auctions?key=%v&page=%v", client.Key, i))
+		if err != nil {
+			return auctions, err
+		}
+
+		if err = json.Unmarshal(data, &page); err != nil {
+			return auctions, err
+		}
+
+		auctions.Auctions = append(auctions.Auctions, page.Auctions...)
+	}
+
+	return auctions, err
+}
+
+func (client *Client) SkyblockActiveAuctionsPage(page int) (structs.SkyblockActiveAuctionsPage, error) {
+	var auctions structs.SkyblockActiveAuctionsPage
+
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/skyblock/auctions?key=%v&page=%v", client.Key, page))
 	if err != nil {
 		return auctions, err
 	}

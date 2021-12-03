@@ -220,19 +220,27 @@ func TestSkyblockNews(t *testing.T) {
 }
 
 func TestSkyblockActiveAuctions(t *testing.T) {
-	auctions, err := client.SkyblockActiveAuctions()
+	_, err := client.SkyblockActiveAuctions()
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(auctions)
+	// The results can't be printed for this test because it will run for too long and kill the test
+}
+
+func TestSkyblockActiveAuctionsPage(t *testing.T) {
+	_, err := client.SkyblockActiveAuctionsPage(0)
+	if err != nil {
+		t.Error(err)
+	}
+	// The results can't be printed for this test because it will run for too long and kill the test
 }
 
 func TestSkyblockEndedAuctions(t *testing.T) {
-	auctions, err := client.SkyblockActiveAuctions()
+	_, err := client.SkyblockActiveAuctions()
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(auctions)
+	// The results can't be printed for this test because it will run for too long and kill the test
 }
 
 func TestBoosters(t *testing.T) {
