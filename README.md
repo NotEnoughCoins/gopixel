@@ -24,6 +24,11 @@ import "github.com/comblock/gopixel"
 
 var client *gopixel.Client = gopixel.NewClient(<your API key>, <Amount of retries (0 is default value)>)
 
+func main() {
+	// example
+	bazaar := client.Bazaar()
+  fmt.Println(bazaar.Products.BrownMushroom.SellSummary.PricePerUnit)
+
 ```
 
 ### Supported endpoints
