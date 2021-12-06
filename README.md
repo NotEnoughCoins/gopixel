@@ -27,7 +27,7 @@ var client *gopixel.Client = gopixel.NewClient(<your API key>, <Amount of retrie
 func main() {
 	// example
 	bazaar := client.Bazaar()
-  	fmt.Println(bazaar.Products.BrownMushroom.SellSummary.PricePerUnit)
+  	fmt.Println(bazaar.Products.BrownMushroom.SellPrice)
 
 ```
 
