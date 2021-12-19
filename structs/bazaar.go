@@ -25,10 +25,10 @@ type QuickStatus struct {
 }
 
 type Product struct {
-	ProductID   string `json:"product_id"`
-	Sellsummary `json:"sell_summary"`
-	BuySummary  `json:"buy_summary"`
-	QuickStatus `json:"quick_status"`
+	ProductID   string      `json:"product_id"`
+	Sellsummary Sellsummary `json:"sell_summary"`
+	BuySummary  BuySummary  `json:"buy_summary"`
+	QuickStatus QuickStatus `json:"quick_status"`
 }
 
 type Bazaar struct {

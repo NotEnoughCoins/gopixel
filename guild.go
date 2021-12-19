@@ -22,20 +22,6 @@ func (client *Client) GuildAchievements() (structs.GuildAchievements, error) {
 	return guildAchievements, err
 }
 
-// Method to get a list of guild permissions
-func (client *Client) GuildPermissions() (structs.GuildPermissions, error) {
-	var guildPermissions structs.GuildPermissions
-
-	data, err := client.get("api.hypixel.net/resources/guilds/permissions?key=" + client.Key)
-	if err != nil {
-		return guildPermissions, err
-	}
-
-	err = json.Unmarshal(data, &guildPermissions)
-
-	return guildPermissions, err
-}
-
 // Method to get a guild by its id
 func (client *Client) GuildById(id string) (structs.Guild, error) {
 	var guild structs.Guild

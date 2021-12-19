@@ -274,3 +274,19 @@ func TestPunishmentStats(t *testing.T) {
 	}
 	fmt.Println(stats)
 }
+
+func TestVanityPets(t *testing.T) {
+	pets, err := client.VanityPets()
+	if err != nil {
+		t.Error(err)
+	}
+	fmt.Println(pets)
+}
+
+func TestVanityCompanions(t *testing.T) {
+	companions, err := client.VanityCompanions()
+	if err != nil {
+		t.Error(err)
+	}
+	fmt.Println(companions)
+}
