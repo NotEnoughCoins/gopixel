@@ -166,3 +166,37 @@ func (client *Client) RankedSkywars(name string) (structs.RankedSkywars, error) 
 
 	return rankedSkywars, err
 }
+
+func (client *Client) VanityPets() (structs.Vanity, error) {
+	var VanityPets structs.Vanity
+
+	data, err := client.get("api.hypixel.net/resources/vanity/pets?key=" + client.Key)
+	if err != nil {
+		return VanityPets, err
+	}
+
+	err = json.Unmarshal(data, &VanityPets)
+
+	if !VanityPets.Success {
+		err = errors.New(VanityPets.Cause)
+	}
+
+	return VanityPets, err
+}
+
+func (client *Client) VanityCompanions() (structs.Vanity, error) {
+	var VanityCompanions structs.Vanity
+
+	data, err := client.get("api.hypixel.net/resources/vanity/companions?key=" + client.Key)
+	if err != nil {
+		return VanityCompanions, err
+	}
+
+	err = json.Unmarshal(data, &VanityCompanions)
+
+	if !VanityCompanions.Success {
+		err = errors.New(VanityCompanions.Cause)
+	}
+
+	return VanityCompanions, err
+}
