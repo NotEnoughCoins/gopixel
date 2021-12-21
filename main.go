@@ -28,7 +28,7 @@ func (client *Client) get(url string) ([]byte, error) {
 
 		defer resp.Body.Close()
 
-		if resp.StatusCode != 200 && resp.StatusCode != 404 {
+		if resp.StatusCode != 200 && resp.StatusCode != 404 && resp.StatusCode != 403 {
 			continue
 		}
 
