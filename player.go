@@ -2,6 +2,7 @@ package gopixel
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"errors"
 
@@ -10,7 +11,7 @@ import (
 
 // Function to convert a player name to uuid using the mojang api
 func (client *Client) Uuid(name string) (string, error) {
-	data, err := client.get("api.mojang.com/users/profiles/minecraft/" + name)
+	data, err := client.get(fmt.Sprintf("api.mojang.com/users/profiles/minecraft/%v", name))
 
 	var mojangPlayer struct {
 		Name string `json:"name"`
@@ -36,7 +37,7 @@ func (client *Client) Friends(name string) (structs.Friends, error) {
 	if err != nil {
 		return friends, err
 	}
-	data, err := client.get("api.hypixel.net/friends?uuid=" + uuid + "&key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/friends?uuid=%v&key=%v", uuid, client.Key))
 
 	if err != nil {
 		return friends, err
@@ -60,7 +61,7 @@ func (client *Client) PlayerStatus(name string) (structs.PlayerStatus, error) {
 	if err != nil {
 		return playerStatus, err
 	}
-	data, err := client.get("api.hypixel.net/status?uuid=" + uuid + "&key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/status?uuid=%v&key=%v", uuid, client.Key))
 
 	if err != nil {
 		return playerStatus, err
@@ -84,7 +85,7 @@ func (client *Client) PlayerData(name string) (structs.Player, error) {
 	if err != nil {
 		return player, err
 	}
-	data, err := client.get("api.hypixel.net/player?uuid=" + uuid + "&key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/player?uuid=%v&key=%v", uuid, client.Key))
 
 	if err != nil {
 		return player, err
@@ -108,7 +109,7 @@ func (client *Client) RecentGames(name string) (structs.RecentGames, error) {
 		return recentGames, err
 	}
 
-	data, err := client.get("api.hypixel.net/recentgames?uuid=" + uuid + "&key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/recentgames?uuid=%v&key=%v", uuid, client.Key))
 	if err != nil {
 		return recentGames, err
 	}

@@ -2,6 +2,7 @@ package gopixel
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"errors"
 
@@ -12,7 +13,7 @@ import (
 func (client *Client) GuildAchievements() (structs.GuildAchievements, error) {
 	var guildAchievements structs.GuildAchievements
 
-	data, err := client.get("api.hypixel.net/resources/guilds/achievements?key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/resources/guilds/achievements?key=%v", client.Key))
 	if err != nil {
 		return guildAchievements, err
 	}
@@ -26,7 +27,7 @@ func (client *Client) GuildAchievements() (structs.GuildAchievements, error) {
 func (client *Client) GuildById(id string) (structs.Guild, error) {
 	var guild structs.Guild
 
-	data, err := client.get("api.hypixel.net/guild?id=" + id + "&key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/guild?id=%v&key=%v", id, client.Key))
 	if err != nil {
 		return guild, err
 	}
@@ -44,7 +45,7 @@ func (client *Client) GuildById(id string) (structs.Guild, error) {
 func (client *Client) GuildByName(name string) (structs.Guild, error) {
 	var guild structs.Guild
 
-	data, err := client.get("api.hypixel.net/guild?name=" + name + "&key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/guild?name=%v&key=%v", name, client.Key))
 	if err != nil {
 		return guild, err
 	}
@@ -66,7 +67,7 @@ func (client *Client) GuildByPlayer(player string) (structs.Guild, error) {
 		return guild, err
 	}
 
-	data, err := client.get("api.hypixel.net/guild?player=" + uuid + "&key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/guild?player=%v&key=%v", uuid, client.Key))
 	if err != nil {
 		return guild, err
 	}

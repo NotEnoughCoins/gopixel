@@ -2,6 +2,7 @@ package gopixel
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"errors"
 
@@ -12,7 +13,7 @@ import (
 func (client *Client) Achievements() (structs.Achievements, error) {
 	var achievements structs.Achievements
 
-	data, err := client.get("api.hypixel.net/resources/achievements?key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/resources/achievements?key=%v", client.Key))
 
 	if err != nil {
 		return achievements, err
@@ -31,7 +32,7 @@ func (client *Client) Achievements() (structs.Achievements, error) {
 func (client *Client) Games() (structs.Games, error) {
 	var games structs.Games
 
-	data, err := client.get("api.hypixel.net/resources/games?key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/resources/games?key=%v", client.Key))
 	if err != nil {
 		return games, err
 	}
@@ -45,7 +46,7 @@ func (client *Client) Games() (structs.Games, error) {
 func (client *Client) Boosters() (structs.Boosters, error) {
 	var boosters structs.Boosters
 
-	data, err := client.get("api.hypixel.net/boosters?key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/boosters?key=%v", client.Key))
 	if err != nil {
 		return boosters, err
 	}
@@ -59,7 +60,7 @@ func (client *Client) Boosters() (structs.Boosters, error) {
 func (client *Client) Challenges() (structs.Challenges, error) {
 	var challenges structs.Challenges
 
-	data, err := client.get("api.hypixel.net/resources/challenges?challenges=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/resources/challenges?challenges=%v", client.Key))
 	if err != nil {
 		return challenges, err
 	}
@@ -73,7 +74,7 @@ func (client *Client) Challenges() (structs.Challenges, error) {
 func (client *Client) KeyData() (structs.Key, error) {
 	var key structs.Key
 
-	data, err := client.get("api.hypixel.net/key?key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/key?key=%v", client.Key))
 	if err != nil {
 		return key, err
 	}
@@ -90,7 +91,7 @@ func (client *Client) KeyData() (structs.Key, error) {
 // Method to get the current player counts
 func (client *Client) PlayerCounts() (structs.PlayerCounts, error) {
 	var counts structs.PlayerCounts
-	data, err := client.get("api.hypixel.net/counts?key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/counts?key=%v", client.Key))
 	if err != nil {
 		return counts, err
 	}
@@ -104,7 +105,7 @@ func (client *Client) PlayerCounts() (structs.PlayerCounts, error) {
 func (client *Client) Leaderboards() (structs.Leaderboards, error) {
 	var leaderboards structs.Leaderboards
 
-	data, err := client.get("api.hypixel.net/leaderboards?key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/leaderboards?key=%v", client.Key))
 	if err != nil {
 		return leaderboards, err
 	}
@@ -118,7 +119,7 @@ func (client *Client) Leaderboards() (structs.Leaderboards, error) {
 func (client *Client) PunishmentStats() (structs.PunishmentStats, error) {
 	var stats structs.PunishmentStats
 
-	data, err := client.get("api.hypixel.net/punishmentstats?key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/punishmentstats?key=%v", client.Key))
 	if err != nil {
 		return stats, err
 	}
@@ -132,7 +133,7 @@ func (client *Client) PunishmentStats() (structs.PunishmentStats, error) {
 func (client *Client) Quests() (structs.Quests, error) {
 	var quests structs.Quests
 
-	data, err := client.get("api.hypixel.net/resources/quests?key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/resources/quests?key=%v", client.Key))
 	if err != nil {
 		return quests, err
 	}
@@ -152,7 +153,7 @@ func (client *Client) RankedSkywars(name string) (structs.RankedSkywars, error) 
 		return rankedSkywars, err
 	}
 
-	data, err := client.get("api.hypixel.net/player/ranked/skywars?uuid=" + uuid + "&key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/player/ranked/skywars?uuid=%v&key=%v", uuid, client.Key))
 
 	if err != nil {
 		return rankedSkywars, err
@@ -170,7 +171,7 @@ func (client *Client) RankedSkywars(name string) (structs.RankedSkywars, error) 
 func (client *Client) VanityPets() (structs.Vanity, error) {
 	var VanityPets structs.Vanity
 
-	data, err := client.get("api.hypixel.net/resources/vanity/pets?key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/resources/vanity/pets?key=%v", client.Key))
 	if err != nil {
 		return VanityPets, err
 	}
@@ -187,7 +188,7 @@ func (client *Client) VanityPets() (structs.Vanity, error) {
 func (client *Client) VanityCompanions() (structs.Vanity, error) {
 	var VanityCompanions structs.Vanity
 
-	data, err := client.get("api.hypixel.net/resources/vanity/companions?key=" + client.Key)
+	data, err := client.get(fmt.Sprintf("api.hypixel.net/resources/vanity/companions?key=%v", client.Key))
 	if err != nil {
 		return VanityCompanions, err
 	}
