@@ -59,4 +59,6 @@ func main() {
 - https://api.hypixel.net/leaderboards
 - https://api.hypixel.net/punishmentstats
 
+
+If you have any questions, DM me on discord (comblock#5184)
 [^1]: as of 30/10/2021
