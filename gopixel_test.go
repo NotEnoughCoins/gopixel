@@ -3,11 +3,11 @@ package gopixel
 import (
 	"encoding/json"
 
-	"fmt"
-
 	"testing"
 
 	"os"
+
+	"github.com/davecgh/go-spew/spew"
 )
 
 // The config struct with all of the required variables
@@ -19,12 +19,11 @@ type Config struct {
 	RankedSkywarsPlayer string `json:"ranked_skywars_player"`
 	GuildId             string `json:"guild_id"`
 	GuildName           string `json:"guild_name"`
+	OutputFile          string `json:"output_file"`
 }
 
-// Get's the json data from the config.json file and unmarshals it to the Config struct
 func getConfig() Config {
 	var config Config
-
 	bytes, err := os.ReadFile("config.json")
 
 	if err != nil {
@@ -35,19 +34,33 @@ func getConfig() Config {
 	if err != nil {
 		panic(err)
 	}
-
 	return config
 }
 
+var output *os.File
 var config Config = getConfig()
 var client *Client = NewClient(config.Key, config.Retries)
+
+func init() {
+	// Opens the output file
+	if config.OutputFile == "" {
+		config.OutputFile = "test.log"
+	}
+
+	var err error
+	output, err = os.Create(config.OutputFile)
+
+	if err != nil {
+		panic(err)
+	}
+}
 
 func TestKeyData(t *testing.T) {
 	key, err := client.KeyData()
 	if err != nil {
 		t.Error((err))
 	}
-	fmt.Println(key)
+	spew.Fdump(output, key)
 }
 
 func TestPlayerData(t *testing.T) {
@@ -55,7 +68,7 @@ func TestPlayerData(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(player)
+	spew.Fdump(output, player)
 }
 
 func TestAchievements(t *testing.T) {
@@ -63,7 +76,7 @@ func TestAchievements(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(achievements)
+	spew.Fdump(output, achievements)
 }
 
 func TestBazaar(t *testing.T) {
@@ -71,7 +84,7 @@ func TestBazaar(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(bazaar)
+	spew.Fdump(output, bazaar)
 }
 
 func TestFriends(t *testing.T) {
@@ -79,7 +92,7 @@ func TestFriends(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(friends)
+	spew.Fdump(output, friends)
 }
 
 func TestQuests(t *testing.T) {
@@ -87,7 +100,7 @@ func TestQuests(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(quests)
+	spew.Fdump(output, quests)
 }
 
 func TestChallenges(t *testing.T) {
@@ -95,7 +108,7 @@ func TestChallenges(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(challenges)
+	spew.Fdump(output, challenges)
 }
 
 func TestGames(t *testing.T) {
@@ -103,7 +116,7 @@ func TestGames(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(games)
+	spew.Fdump(output, games)
 }
 
 func TestGuildByPlayer(t *testing.T) {
@@ -111,7 +124,7 @@ func TestGuildByPlayer(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(guild)
+	spew.Fdump(output, guild)
 }
 
 func TestGuildById(t *testing.T) {
@@ -119,7 +132,7 @@ func TestGuildById(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(guild)
+	spew.Fdump(output, guild)
 }
 
 func TestGuildByName(t *testing.T) {
@@ -127,7 +140,7 @@ func TestGuildByName(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(guild)
+	spew.Fdump(output, guild)
 }
 
 func TestGuildAchievements(t *testing.T) {
@@ -135,7 +148,7 @@ func TestGuildAchievements(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(guildAchievements)
+	spew.Fdump(output, guildAchievements)
 }
 
 func TestGuilPermissions(t *testing.T) {
@@ -143,7 +156,7 @@ func TestGuilPermissions(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(guildPermissions)
+	spew.Fdump(output, guildPermissions)
 }
 
 func TestSkyblockCollections(t *testing.T) {
@@ -151,7 +164,7 @@ func TestSkyblockCollections(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(skyblockCollections)
+	spew.Fdump(output, skyblockCollections)
 }
 
 func TestSkyblockProfiles(t *testing.T) {
@@ -159,7 +172,7 @@ func TestSkyblockProfiles(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(profiles)
+	spew.Fdump(output, profiles)
 }
 
 func TestSkyblockProfile(t *testing.T) {
@@ -167,7 +180,7 @@ func TestSkyblockProfile(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(profiles)
+	spew.Fdump(output, profiles)
 }
 
 func TestSkyblockItems(t *testing.T) {
@@ -175,7 +188,7 @@ func TestSkyblockItems(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(items)
+	spew.Fdump(output, items)
 }
 
 func TestRecentGames(t *testing.T) {
@@ -183,7 +196,7 @@ func TestRecentGames(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(games)
+	spew.Fdump(output, games)
 }
 
 func TestPlayerStatus(t *testing.T) {
@@ -191,7 +204,7 @@ func TestPlayerStatus(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(status)
+	spew.Fdump(output, status)
 }
 
 func TestSkyblockSkills(t *testing.T) {
@@ -199,7 +212,7 @@ func TestSkyblockSkills(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(skills)
+	spew.Fdump(output, skills)
 }
 
 // If this test fails with the error message "No result was found" it means that the player doesn't have any data and NOT that the function is broken
@@ -208,7 +221,7 @@ func TestRankedSkywars(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(data)
+	spew.Fdump(output, data)
 }
 
 func TestSkyblockNews(t *testing.T) {
@@ -216,31 +229,31 @@ func TestSkyblockNews(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(news)
+	spew.Fdump(output, news)
 }
 
 func TestSkyblockActiveAuctions(t *testing.T) {
-	_, err := client.SkyblockActiveAuctions()
+	auctions, err := client.SkyblockActiveAuctions()
 	if err != nil {
 		t.Error(err)
 	}
-	// The results can't be printed for this test because it will run for too long and kill the test
+	spew.Fdump(output, auctions)
 }
 
 func TestSkyblockActiveAuctionsPage(t *testing.T) {
-	_, err := client.SkyblockActiveAuctionsPage(0)
+	page, err := client.SkyblockActiveAuctionsPage(0)
 	if err != nil {
 		t.Error(err)
 	}
-	// The results can't be printed for this test because it will run for too long and kill the test
+	spew.Fdump(output, page)
 }
 
 func TestSkyblockEndedAuctions(t *testing.T) {
-	_, err := client.SkyblockActiveAuctions()
+	auctions, err := client.SkyblockActiveAuctions()
 	if err != nil {
 		t.Error(err)
 	}
-	// The results can't be printed for this test because it will run for too long and kill the test
+	spew.Fdump(output, auctions)
 }
 
 func TestBoosters(t *testing.T) {
@@ -248,7 +261,7 @@ func TestBoosters(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(boosters)
+	spew.Fdump(output, boosters)
 }
 
 func TestPlayerCounts(t *testing.T) {
@@ -256,7 +269,7 @@ func TestPlayerCounts(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(counts)
+	spew.Fdump(output, counts)
 }
 
 func TestLeaderboards(t *testing.T) {
@@ -264,7 +277,7 @@ func TestLeaderboards(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(leaderboards)
+	spew.Fdump(output, leaderboards)
 }
 
 func TestPunishmentStats(t *testing.T) {
@@ -272,7 +285,7 @@ func TestPunishmentStats(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(stats)
+	spew.Fdump(output, stats)
 }
 
 func TestVanityPets(t *testing.T) {
@@ -280,7 +293,7 @@ func TestVanityPets(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(pets)
+	spew.Fdump(output, pets)
 }
 
 func TestVanityCompanions(t *testing.T) {
@@ -288,5 +301,5 @@ func TestVanityCompanions(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(companions)
+	spew.Fdump(output, companions)
 }

@@ -3,6 +3,7 @@ package gopixel
 import (
 	"encoding/json"
 	"fmt"
+	"sync"
 
 	"errors"
 
@@ -28,9 +29,10 @@ func (client *Client) Bazaar() (structs.Bazaar, error) {
 }
 
 // Method to get the active skyblock auctions DO NOT USE THIS WITHOUT CACHING, it will send out a lot of requests (50 or so) and this can rate limit your api key very quickly
-// it also takes quite a long time to run
 func (client *Client) SkyblockActiveAuctions() (structs.SkyblockActiveAuctions, error) {
 	var auctions structs.SkyblockActiveAuctions
+	var auctionsLock sync.Mutex
+	var wg sync.WaitGroup
 	var firstPage structs.SkyblockActiveAuctionsPage
 
 	data, err := client.get("api.hypixel.net/skyblock/auctions?key=" + client.Key)
@@ -43,22 +45,31 @@ func (client *Client) SkyblockActiveAuctions() (structs.SkyblockActiveAuctions, 
 	auctions.Auctions = append(auctions.Auctions, firstPage.Auctions...)
 
 	for i := firstPage.Page + 1; i < firstPage.TotalPages; i++ {
-		var page structs.SkyblockActiveAuctionsPage
+		wg.Add(1)
+		go func(i int, auctions *structs.SkyblockActiveAuctions, auctionsLock *sync.Mutex, wg *sync.WaitGroup) {
+			defer wg.Done()
 
-		data, err := client.get(fmt.Sprintf("api.hypixel.net/skyblock/auctions?key=%v&page=%v", client.Key, i))
-		if err != nil {
-			return auctions, err
-		}
+			var page structs.SkyblockActiveAuctionsPage
 
-		if err = json.Unmarshal(data, &page); err != nil {
-			return auctions, err
-		}
-
-		auctions.Auctions = append(auctions.Auctions, page.Auctions...)
+			data, err := client.get(fmt.Sprintf("api.hypixel.net/skyblock/auctions?key=%v&page=%v", client.Key, i))
+			if err != nil {
+				return
+			}
+			if err := json.Unmarshal(data, &page); err != nil {
+				return
+			}
+			auctionsLock.Lock()
+			auctions.Auctions = append(auctions.Auctions, page.Auctions...)
+			auctionsLock.Unlock()
+		}(i, &auctions, &auctionsLock, &wg)
 	}
+
+	wg.Wait()
 
 	return auctions, err
 }
+
+// // client.get(fmt.Sprintf("api.hypixel.net/skyblock/auctions?key=%v&page=%v", client.Key, index))
 
 func (client *Client) SkyblockActiveAuctionsPage(page int) (structs.SkyblockActiveAuctionsPage, error) {
 	var auctions structs.SkyblockActiveAuctionsPage
