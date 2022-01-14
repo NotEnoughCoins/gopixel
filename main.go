@@ -12,17 +12,18 @@ type Client struct {
 	Key          string
 	Retries      int
 	AuctionCache structs.SkyblockActiveAuctions
+	HttpClient   http.Client
 }
 
-// Returns a client object
+// NewClient Returns a client object
 func NewClient(key string, retries int) *Client {
-	return &Client{Key: key, Retries: retries}
+	return &Client{Key: key, Retries: retries, HttpClient: http.Client{}}
 }
 
 // Internal function to handle http GET requests
 func (client *Client) get(url string) ([]byte, error) {
-	for i := 0; i < 10; i++ {
-		resp, err := http.Get("https://" + url)
+	for i := 0; i < client.Retries; i++ {
+		resp, err := client.HttpClient.Get("https://" + url)
 
 		if err != nil {
 			return nil, nil
