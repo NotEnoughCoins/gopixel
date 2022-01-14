@@ -28,6 +28,48 @@ func (client *Client) Bazaar() (structs.Bazaar, error) {
 	return bazaar, err
 }
 
+func (client *Client) CachedSkyblockActiveAuctions() (structs.SkyblockActiveAuctions, error) {
+	var auctions structs.SkyblockActiveAuctions
+	var auctionsLock sync.Mutex
+	var wg sync.WaitGroup
+	var firstPage structs.SkyblockActiveAuctionsPage
+
+	data, err := client.get("api.hypixel.net/skyblock/auctions")
+	if err != nil {
+		return auctions, err
+	}
+
+	err = json.Unmarshal(data, &firstPage)
+	if firstPage.LastUpdated != client.AuctionCache.LastUpdated {
+		auctions.Auctions = append(auctions.Auctions, firstPage.Auctions...)
+		for i := firstPage.Page + 1; i < firstPage.TotalPages; i++ {
+			wg.Add(1)
+			go func(i int, auctions *structs.SkyblockActiveAuctions, auctionsLock *sync.Mutex, wg *sync.WaitGroup) {
+				defer wg.Done()
+
+				var page structs.SkyblockActiveAuctionsPage
+
+				data, err := client.get(fmt.Sprintf("api.hypixel.net/skyblock/auctions?page=%v", i))
+				if err != nil {
+					return
+				}
+				if err := json.Unmarshal(data, &page); err != nil {
+					return
+				}
+				auctionsLock.Lock()
+				auctions.Auctions = append(auctions.Auctions, page.Auctions...)
+				auctionsLock.Unlock()
+			}(i, &auctions, &auctionsLock, &wg)
+		}
+
+		wg.Wait()
+
+		return auctions, err
+	} else {
+		return client.AuctionCache, nil
+	}
+}
+
 // Method to get the active skyblock auctions DO NOT USE THIS WITHOUT CACHING, it will send out a lot of requests (50 or so) and this can rate limit your api key very quickly
 func (client *Client) SkyblockActiveAuctions() (structs.SkyblockActiveAuctions, error) {
 	var auctions structs.SkyblockActiveAuctions
@@ -35,7 +77,7 @@ func (client *Client) SkyblockActiveAuctions() (structs.SkyblockActiveAuctions, 
 	var wg sync.WaitGroup
 	var firstPage structs.SkyblockActiveAuctionsPage
 
-	data, err := client.get("api.hypixel.net/skyblock/auctions?key=" + client.Key)
+	data, err := client.get("api.hypixel.net/skyblock/auctions")
 	if err != nil {
 		return auctions, err
 	}
@@ -51,7 +93,7 @@ func (client *Client) SkyblockActiveAuctions() (structs.SkyblockActiveAuctions, 
 
 			var page structs.SkyblockActiveAuctionsPage
 
-			data, err := client.get(fmt.Sprintf("api.hypixel.net/skyblock/auctions?key=%v&page=%v", client.Key, i))
+			data, err := client.get(fmt.Sprintf("api.hypixel.net/skyblock/auctions?page=%v", i))
 			if err != nil {
 				return
 			}

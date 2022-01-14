@@ -2,14 +2,16 @@ package gopixel
 
 import (
 	"errors"
+	"github.com/comblock/gopixel/structs"
 	"io/ioutil"
 
 	"net/http"
 )
 
 type Client struct {
-	Key     string
-	Retries int
+	Key          string
+	Retries      int
+	AuctionCache structs.SkyblockActiveAuctions
 }
 
 // Returns a client object

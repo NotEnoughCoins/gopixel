@@ -232,6 +232,14 @@ func TestSkyblockNews(t *testing.T) {
 	spew.Fdump(output, news)
 }
 
+func TestCachedSkyblockActiveAuctions(t *testing.T) {
+	auctions, err := client.CachedSkyblockActiveAuctions()
+	if err != nil {
+		t.Error(err)
+	}
+	spew.Fdump(output, auctions)
+}
+
 func TestSkyblockActiveAuctions(t *testing.T) {
 	auctions, err := client.SkyblockActiveAuctions()
 	if err != nil {

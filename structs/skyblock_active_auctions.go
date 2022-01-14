@@ -1,5 +1,34 @@
 package structs
 
+import (
+	"bytes"
+	"compress/gzip"
+	"encoding/base64"
+	"encoding/json"
+	"github.com/Tnze/go-mc/nbt"
+)
+
+type ParsedNBT struct {
+	Data map[string]interface{}
+}
+
+func (p *ParsedNBT) UnmarshalJSON(data []byte) error {
+	var y string
+	err := json.Unmarshal(data, &y)
+	if err != nil {
+		return err
+	}
+	var d map[string]interface{}
+	n, err := base64.StdEncoding.DecodeString(y)
+	r, err := gzip.NewReader(bytes.NewReader(n))
+	_, err = nbt.NewDecoder(r).Decode(&d)
+	if err != nil {
+		return err
+	}
+	p.Data = d
+	return nil
+}
+
 type SkyblockActiveAuctions struct {
 	Success       bool   `json:"success"`
 	Cause         string `json:"cause"`
@@ -19,7 +48,7 @@ type SkyblockActiveAuctions struct {
 		Category         string        `json:"category"`
 		Tier             string        `json:"tier"`
 		StartingBid      int           `json:"starting_bid"`
-		ItemBytes        string        `json:"item_bytes"`
+		ItemBytes        ParsedNBT     `json:"item_bytes"`
 		Claimed          bool          `json:"claimed"`
 		ClaimedBidders   []interface{} `json:"claimed_bidders"`
 		HighestBidAmount int           `json:"highest_bid_amount"`
@@ -48,7 +77,7 @@ type SkyblockActiveAuctionsPage struct {
 		Category         string        `json:"category"`
 		Tier             string        `json:"tier"`
 		StartingBid      int           `json:"starting_bid"`
-		ItemBytes        string        `json:"item_bytes"`
+		ItemBytes        ParsedNBT     `json:"item_bytes"`
 		Claimed          bool          `json:"claimed"`
 		ClaimedBidders   []interface{} `json:"claimed_bidders"`
 		HighestBidAmount int           `json:"highest_bid_amount"`
