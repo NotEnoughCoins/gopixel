@@ -40,8 +40,13 @@ func (client *Client) CachedSkyblockActiveAuctions() (structs.SkyblockActiveAuct
 	}
 
 	err = json.Unmarshal(data, &firstPage)
+	auctions.Success = firstPage.Success
+	auctions.Cause = firstPage.Cause
+	auctions.TotalAuctions = firstPage.TotalAuctions
+	auctions.TotalPages = firstPage.TotalPages
+	auctions.LastUpdated = firstPage.LastUpdated
+	auctions.Auctions = firstPage.Auctions
 	if firstPage.LastUpdated != client.AuctionCache.LastUpdated {
-		auctions.Auctions = append(auctions.Auctions, firstPage.Auctions...)
 		for i := firstPage.Page + 1; i < firstPage.TotalPages; i++ {
 			wg.Add(1)
 			go func(i int, auctions *structs.SkyblockActiveAuctions, auctionsLock *sync.Mutex, wg *sync.WaitGroup) {
@@ -61,9 +66,8 @@ func (client *Client) CachedSkyblockActiveAuctions() (structs.SkyblockActiveAuct
 				auctionsLock.Unlock()
 			}(i, &auctions, &auctionsLock, &wg)
 		}
-
 		wg.Wait()
-
+		client.AuctionCache = auctions
 		return auctions, err
 	} else {
 		return client.AuctionCache, nil
