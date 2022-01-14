@@ -5,6 +5,7 @@ import (
 	"compress/gzip"
 	"encoding/base64"
 	"encoding/json"
+
 	"github.com/Tnze/go-mc/nbt"
 )
 

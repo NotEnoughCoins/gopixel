@@ -1,8 +1,6 @@
 package gopixel
 
 import (
-	"encoding/json"
-
 	"testing"
 
 	"os"

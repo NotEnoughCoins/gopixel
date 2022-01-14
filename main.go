@@ -3,9 +3,14 @@ package gopixel
 import (
 	"errors"
 	"github.com/NotEnoughCoins/gopixel/structs"
+	jsoniter "github.com/json-iterator/go"
 	"io/ioutil"
 
 	"net/http"
+)
+
+var (
+	json = jsoniter.ConfigCompatibleWithStandardLibrary
 )
 
 type Client struct {
