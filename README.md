@@ -15,12 +15,12 @@ A simple and complete[^1] wrapper for the hypixel API
 
 ## Installation
 ```
-go get github.com/comblock/gopixel
+go get github.com/NotEnoughCoins/gopixel
 ```
 
 ## Usage
 ```go
-import "github.com/comblock/gopixel"
+import "github.com/NotEnoughCoins/gopixel"
 
 var client *gopixel.Client = gopixel.NewClient(<your API key>, <Amount of retries (0 is default value)>)
 

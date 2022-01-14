@@ -2,7 +2,7 @@ package gopixel
 
 import (
 	"errors"
-	"github.com/comblock/gopixel/structs"
+	"github.com/NotEnoughCoins/gopixel/structs"
 	"io/ioutil"
 
 	"net/http"

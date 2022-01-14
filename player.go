@@ -5,7 +5,7 @@ import (
 
 	"errors"
 
-	"github.com/comblock/gopixel/structs"
+	"github.com/NotEnoughCoins/gopixel/structs"
 )
 
 // Function to convert a player name to uuid using the mojang api

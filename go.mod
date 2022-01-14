@@ -1,4 +1,4 @@
-module github.com/comblock/gopixel
+module github.com/NotEnoughCoins/gopixel
 
 go 1.17
 

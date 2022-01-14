@@ -5,7 +5,7 @@ import (
 
 	"errors"
 
-	"github.com/comblock/gopixel/structs"
+	"github.com/NotEnoughCoins/gopixel/structs"
 )
 
 // Method to get the global achievements
