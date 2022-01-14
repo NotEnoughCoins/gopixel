@@ -1,13 +1,15 @@
 package gopixel
 
 import (
-	"encoding/json"
-	"fmt"
-	"sync"
-
 	"errors"
-
+	"fmt"
 	"github.com/NotEnoughCoins/gopixel/structs"
+	jsoniter "github.com/json-iterator/go"
+	"sync"
+)
+
+var (
+	json = jsoniter.ConfigCompatibleWithStandardLibrary
 )
 
 // Method to get the bazaar data
